@@ -18,4 +18,11 @@ function copyDir() {
   );
 }
 
-copyDir();
+fs.access(path.join(__dirname, 'files-copy'), (err) => {
+  if (err) copyDir();
+  else
+    fs.rm(path.join(__dirname, 'files-copy'), { recursive: true }, (error) => {
+      if (error) throw error;
+      else copyDir();
+    });
+});
