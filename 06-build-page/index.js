@@ -64,7 +64,10 @@ function replaceTempTags(patchDistDir) {
         tagName + '.html',
       );
       fs.access(pathComponent, (error) => {
-        if (error) console.log(`Component {{${tagName}}} not found`);
+        if (error)
+          console.log(
+            `Component {{${tagName}}} not found. Add "${pathComponent}"`,
+          );
         else {
           let component = '';
           const readComponent = fs.createReadStream(pathComponent);
